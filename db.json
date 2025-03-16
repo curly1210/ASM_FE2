@@ -1,0 +1,32 @@
+{
+  "products": [
+    {
+      "name": "iphone-15",
+      "price": 100,
+      "quantity": 100,
+      "categoryID": 1,
+      "image": "https://file.hstatic.net/1000359786/file/291703442_72b39a250c9c4bc5ae4f887fdf927cfb_grande.jpeg",
+      "description": "hi",
+      "id": 1
+    },
+    {
+      "name": "samsung s25",
+      "price": 12,
+      "quantity": 123123,
+      "categoryID": 2,
+      "image": "https://cdn.tgdd.vn/Products/Images/42/333359/samsung-galaxy-s25-plus-blue-thumb-600x600.jpg",
+      "description": "xczxc",
+      "id": 2
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "iphone"
+    },
+    {
+      "id": 2,
+      "name": "samsung"
+    }
+  ]
+}

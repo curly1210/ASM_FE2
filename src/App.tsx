@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { Navigate, Outlet, Route, Routes } from "react-router-dom";
+import LayoutAdmin from "./components/LayoutAmin";
+import Authenticated from "./components/Authenticated";
+import Dashboard from "./pages/Dashboard";
+import ProductListPage from "./pages/products/list";
+import ProductAdd from "./pages/products/create";
+import ProductUpdate from "./pages/products/update";
+import UserListPage from "./pages/users/list";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Routes>
+        <Route
+          path="admin"
+          element={
+            <Authenticated fallback={<Navigate to="/login" replace />}>
+              <LayoutAdmin>
+                <Outlet />
+              </LayoutAdmin>
+            </Authenticated>
+          }
+        >
+          <Route index element={<Dashboard />} />
+          <Route path="products">
+            <Route index element={<ProductListPage />} />
+            <Route path="create" element={<ProductAdd />} />
+            <Route path="update/:id" element={<ProductUpdate />} />
+          </Route>
+
+          <Route path="users">
+            <Route index element={<UserListPage />} />
+          </Route>
+        </Route>
+        <Route path="login" element={<h1>Login</h1>} />
+        <Route path="*" element={<h1>404 not found</h1>} />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
