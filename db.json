@@ -1,15 +1,6 @@
 {
   "products": [
     {
-      "name": "iphone-15",
-      "price": 100,
-      "quantity": 100,
-      "categoryID": 1,
-      "image": "https://file.hstatic.net/1000359786/file/291703442_72b39a250c9c4bc5ae4f887fdf927cfb_grande.jpeg",
-      "description": "hi",
-      "id": 1
-    },
-    {
       "name": "samsung s25",
       "price": 12,
       "quantity": 123123,
@@ -27,6 +18,26 @@
     {
       "id": 2,
       "name": "samsung"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "oanh@mail.com",
+      "password": "123456",
+      "fullname": "Olivier",
+      "sex": "Nữ",
+      "phone": "0766004415",
+      "role": "user"
+    },
+    {
+      "id": 2,
+      "email": "cuong@mail.com",
+      "password": "123456",
+      "fullname": "Olivier",
+      "sex": "Nam",
+      "phone": "0898645513",
+      "role": "user"
     }
   ]
 }

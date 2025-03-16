@@ -19,7 +19,7 @@ const menuItems = [
   },
   {
     key: 2,
-    label: <Link to="/admin/users">Products</Link>,
+    label: <Link to="/admin/users">Tài khoản</Link>,
     icon: <DesktopOutlined />,
   },
 ];

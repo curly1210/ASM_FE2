@@ -1,12 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Button, Skeleton, Table } from "antd";
+import { Button, Popconfirm, Skeleton, Table } from "antd";
 import useList from "../../hooks/useList";
 import { IProduct } from "../../interface/type";
 import { Link } from "react-router-dom";
+import useDelete from "../../hooks/useDelete";
 // import { IProduct } from "../../interface/type";
 
 const ProductListPage = () => {
   const { data, isLoading, error, isError } = useList({ resource: "products" });
+
+  const { mutate } = useDelete({ resource: "products" });
 
   const dataSource = data?.data?.map((product: IProduct) => ({
     key: product.id,
@@ -42,12 +45,18 @@ const ProductListPage = () => {
         // console.log(params2);
         return (
           <div className="flex space-x-3">
-            <Button type="primary">
-              <Link to={`/admin/products/update/${item.id}`}>Sửa</Link>
-            </Button>
-            <Button type="primary" danger>
-              <Link to={`/admin/products/create`}>Xóa</Link>
-            </Button>
+            <Link to={`/admin/products/update/${item.id}`}>
+              <Button type="primary">Sửa</Button>
+            </Link>
+            <Popconfirm
+              title="Xóa sản phẩm"
+              description="Bạn có chắc muốn xóa sản phẩm này không?"
+              onConfirm={() => mutate(item.id)}
+              okText="Yes"
+              cancelText="No"
+            >
+              <Button danger>Xóa</Button>
+            </Popconfirm>
           </div>
         );
       },
@@ -62,9 +71,9 @@ const ProductListPage = () => {
     <div>
       <div className="flex justify-between mb-3">
         <h2 className="text-xl font-bold">Danh sách sản phẩm</h2>
-        <Button type="primary">
-          <Link to={"/admin/products/create"}>Thêm sản phẩm</Link>
-        </Button>
+        <Link to={"/admin/products/create"}>
+          <Button type="primary">Thêm mới</Button>
+        </Link>
       </div>
       <Table dataSource={dataSource} columns={columns} />
     </div>
