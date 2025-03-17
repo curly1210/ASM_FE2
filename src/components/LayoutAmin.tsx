@@ -37,9 +37,6 @@ const LayoutAdmin = ({ children }: LayoutAminProps) => {
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
       >
-<<<<<<< HEAD
-        <div className="demo-logo-vertical" />
-=======
         <div className="flex justify-center m-4">
           <img
             src="https://cdn2.fptshop.com.vn/unsafe/360x0/filters:quality(100)/small/fptshop_logo_c5ac91ae46.png"
@@ -47,7 +44,6 @@ const LayoutAdmin = ({ children }: LayoutAminProps) => {
             width={120}
           />
         </div>
->>>>>>> master
         <Menu
           theme="dark"
           defaultSelectedKeys={["1"]}
