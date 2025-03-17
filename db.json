@@ -1,6 +1,15 @@
 {
   "products": [
     {
+      "name": "Iphone 15",
+      "price": 12,
+      "quantity": 123123,
+      "categoryID": 2,
+      "image": "https://cdn.tgdd.vn/Products/Images/42/333359/samsung-galaxy-s25-plus-blue-thumb-600x600.jpg",
+      "description": "xczxc",
+      "id": 1
+    },
+    {
       "name": "samsung s25",
       "price": 12,
       "quantity": 123123,

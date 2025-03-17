@@ -2,7 +2,7 @@
 import axios from "axios";
 import { IProduct } from "../interface/type";
 
-const API_URL = "http://localhost:3000";
+const API_URL = "http://localhost:3001";
 // const API_URL = "https://api.fake-rest.refine.dev";
 
 type getListParams = {
