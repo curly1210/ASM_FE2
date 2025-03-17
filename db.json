@@ -22,6 +22,7 @@
   ],
   "users": [
     {
+<<<<<<< HEAD
       "id": 1,
       "email": "oanh@mail.com",
       "password": "123456",
@@ -31,6 +32,8 @@
       "role": "user"
     },
     {
+=======
+>>>>>>> master
       "id": 2,
       "email": "cuong@mail.com",
       "password": "123456",
