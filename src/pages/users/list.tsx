@@ -1,26 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Button, Popconfirm, Skeleton, Table, message } from "antd";
+import { Button, Skeleton, Table } from "antd";
 import useList from "../../hooks/useList";
-import useDelete from "../../hooks/useDelete";
+import { IProduct } from "../../interface/type";
 import { Link } from "react-router-dom";
+// import { IProduct } from "../../interface/type";
 
 const UserListPage = () => {
-  const { data, isLoading, error, isError, mutate: refetch } = useList({ resource: "users" });
-  const { mutate } = useDelete({
-    resource: "users",
-    onSuccess: () => {
-      message.success("Xóa người dùng thành công!");
-      refetch(); // Cập nhật lại danh sách sau khi xóa
-    },
-    onError: () => {
-      message.error("Xóa người dùng thất bại!");
-    },
-  });
+  const { data, isLoading, error, isError } = useList({ resource: "users" });
 
-  const dataSource = data?.data?.map((user: any) => ({
-    key: user.id,
-    ...user,
+  const dataSource = data?.data?.map((product: IProduct) => ({
+    key: product.id,
+    ...product,
   }));
 
   const columns = [
@@ -46,35 +37,25 @@ const UserListPage = () => {
     },
     {
       title: "Hành động",
-      key: "action",
-      render: (_: any, user: any) => (
-        <div className="flex space-x-3">
-          <Popconfirm
-            title="Xóa người dùng"
-            description="Bạn có chắc muốn xóa người dùng này không?"
-            onConfirm={() => mutate(user.id)}
-            okText="Có"
-            cancelText="Không"
-          >
-            <Button danger>Xóa</Button>
-          </Popconfirm>
-        </div>
-      ),
+      dataIndex: "action",
+      render: (_: any, item: IProduct) => {
+        // console.log(params2);
+        return <div className="flex space-x-3"></div>;
+      },
     },
   ];
 
   if (isLoading) return <Skeleton active />;
   if (isError) return <div>Error: {error.message}</div>;
-  if (!data) return <div>Không có người dùng nào</div>;
+  if (!data) return <div>Không có sản phẩm nào</div>;
 
   return (
     <div>
       <div className="flex justify-between mb-3">
         <h2 className="text-xl font-bold">Danh sách tài khoản</h2>
       </div>
-      <Table dataSource={dataSource} columns={columns} rowKey="id" />
+      <Table dataSource={dataSource} columns={columns} />
     </div>
   );
 };
-
 export default UserListPage;
